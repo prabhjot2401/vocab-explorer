@@ -35,7 +35,12 @@ const Contribute: React.FC = () => {
       {/* Top Bar */}
       <header className="fixed top-0 w-full md:w-[calc(100%-16rem)] md:left-64 z-50 bg-[#f9f9f9]/80 backdrop-blur-md flex items-center justify-between px-4 md:px-6 py-3 md:py-4">
         <div className="flex items-center gap-3">
-          <h1 className="font-bold tracking-tight text-[#1a1c1c] text-lg md:text-xl">Contribute</h1>
+          <motion.h1
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="font-extrabold tracking-tighter text-2xl md:text-3xl text-[#1a1c1c] whitespace-nowrap"
+          >Contribute</motion.h1>
         </div>
       </header>
 

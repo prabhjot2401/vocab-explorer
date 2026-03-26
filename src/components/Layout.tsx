@@ -143,15 +143,15 @@ const Layout: React.FC = () => {
       {/* Top App Bar — more compact on mobile */}
       {!shouldHideHeader && (
         <header className="fixed top-0 w-full md:w-[calc(100%-16rem)] md:left-64 z-50 flex justify-between items-center px-4 md:px-6 py-3 md:py-4 bg-[#f9f9f9]/80 backdrop-blur-md">
-          <div className="flex items-center gap-3 md:gap-4 relative h-7 md:h-8">
+          <div className="flex items-center gap-3 md:gap-4 relative h-8 md:h-10">
             <AnimatePresence mode="wait">
               <motion.h1 
                 key={getHeaderTitle()}
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                transition={{ duration: 0.3 }}
-                className="font-bold tracking-tighter text-lg md:text-2xl text-[#1a1c1c] absolute left-0"
+                initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className="font-extrabold tracking-tighter text-2xl md:text-3xl text-[#1a1c1c] absolute left-0 whitespace-nowrap"
               >
                 {getHeaderTitle()}
               </motion.h1>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 
 const Settings: React.FC = () => {
@@ -19,13 +20,12 @@ const Settings: React.FC = () => {
       {/* Top Bar */}
       <header className="fixed top-0 w-full md:w-[calc(100%-16rem)] md:left-64 z-50 bg-[#f9f9f9]/80 backdrop-blur-md flex items-center justify-between px-4 md:px-6 py-3 md:py-4">
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => navigate(-1)}
-            className="p-1.5 -ml-1.5 hover:bg-[#e8e8e8] transition-colors active:scale-95 duration-150 rounded-full flex items-center justify-center"
-          >
-            <span className="material-symbols-outlined text-[#1a1c1c]">arrow_back</span>
-          </button>
-          <h1 className="font-bold tracking-tight text-lg md:text-2xl text-[#1a1c1c]">Settings</h1>
+          <motion.h1
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="font-extrabold tracking-tighter text-2xl md:text-3xl text-[#1a1c1c] whitespace-nowrap"
+          >Settings</motion.h1>
         </div>
       </header>
 
@@ -141,20 +141,7 @@ const Settings: React.FC = () => {
         </div>
       </section>
 
-      {/* Secondary Actions */}
-      <section className="pt-4 md:pt-8 border-t border-[#c1c6d4]/20 flex flex-col gap-2.5 md:gap-4">
-        <button className="w-full flex items-center justify-between p-3.5 md:p-4 bg-[#f3f3f3] rounded-xl font-bold text-[#414752] hover:bg-[#e8e8e8] transition-colors text-sm md:text-base">
-          <span>Terms of Service</span>
-          <span className="material-symbols-outlined text-sm">open_in_new</span>
-        </button>
-        <button 
-          onClick={handleSignOut}
-          className="w-full flex items-center justify-between p-3.5 md:p-4 bg-[#ba1a1a]/10 border border-[#ba1a1a]/10 rounded-xl font-bold text-[#ba1a1a] hover:bg-[#ba1a1a]/20 transition-colors text-sm md:text-base"
-        >
-          <span>Sign Out</span>
-          <span className="material-symbols-outlined">logout</span>
-        </button>
-      </section>
+
 
       {/* Version Info */}
       <div className="text-center py-2 md:py-6">

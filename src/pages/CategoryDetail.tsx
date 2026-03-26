@@ -24,7 +24,12 @@ const CategoryDetail: React.FC = () => {
           >
             <span className="material-symbols-outlined text-[#004e99]">arrow_back</span>
           </button>
-          <h1 className="font-bold tracking-tight text-[#1a1c1c] text-lg md:text-xl capitalize">{id}</h1>
+          <motion.h1
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="font-extrabold tracking-tighter text-2xl md:text-3xl text-[#1a1c1c] capitalize whitespace-nowrap"
+          >{id}</motion.h1>
         </div>
         <button className="p-1.5 hover:bg-[#e8e8e8] transition-colors active:scale-95 duration-150 rounded-full flex items-center justify-center">
           <span className="material-symbols-outlined text-[#414752]">search</span>
