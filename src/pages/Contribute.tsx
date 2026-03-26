@@ -35,12 +35,6 @@ const Contribute: React.FC = () => {
       {/* Top Bar */}
       <header className="fixed top-0 w-full md:w-[calc(100%-16rem)] md:left-64 z-50 bg-[#f9f9f9]/80 backdrop-blur-md flex items-center justify-between px-4 md:px-6 py-3 md:py-4">
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => navigate(-1)}
-            className="p-1.5 -ml-1.5 hover:bg-[#e8e8e8] transition-colors active:scale-95 duration-150 rounded-full flex items-center justify-center"
-          >
-            <span className="material-symbols-outlined text-[#004e99]">arrow_back</span>
-          </button>
           <h1 className="font-bold tracking-tight text-[#1a1c1c] text-lg md:text-xl">Contribute</h1>
         </div>
       </header>

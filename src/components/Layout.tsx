@@ -167,7 +167,7 @@ const Layout: React.FC = () => {
 
       {/* Bottom Navigation (Mobile Only) — with safe area inset support */}
       <nav className="fixed bottom-0 w-full z-50 rounded-t-2xl flex justify-around items-center pt-2 px-4 bg-white/80 backdrop-blur-xl border-t border-[#c1c6d4]/20 shadow-[0_-12px_40px_rgba(26,28,28,0.06)] md:hidden safe-bottom">
-        {navItems.slice(0, 4).map((item) => (
+        {navItems.map((item) => (
           <NavLink
             key={item.path}
             to={item.path}
