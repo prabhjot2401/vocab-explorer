@@ -96,7 +96,7 @@ const CategoryDetail: React.FC = () => {
                 <span className="material-symbols-outlined fill-1 text-[20px]">bookmark</span>
               </button>
               <button
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => { e.stopPropagation(); navigate(`/nodes/${word.id}`); }}
                 className="p-1.5 text-[#727783] hover:text-[#004e99] transition-colors active:scale-90"
               >
                 <span className="material-symbols-outlined text-[20px]">hub</span>

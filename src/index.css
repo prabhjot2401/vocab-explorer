@@ -48,4 +48,10 @@
   .safe-bottom {
     padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
   }
+
+  /* Node Network Background */
+  .node-network {
+    background-image: radial-gradient(#c1c6d4 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
 }

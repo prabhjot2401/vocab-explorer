@@ -9,6 +9,7 @@ import Categories from './pages/Categories';
 import CategoryDetail from './pages/CategoryDetail';
 import Contribute from './pages/Contribute';
 import Settings from './pages/Settings';
+import WordNodes from './pages/WordNodes';
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
               <Route path="saved" element={<Saved />} />
               <Route path="categories" element={<Categories />} />
               <Route path="category/:id" element={<CategoryDetail />} />
+              <Route path="nodes/:id" element={<WordNodes />} />
               <Route path="contribute" element={<Contribute />} />
               <Route path="settings" element={<Settings />} />
             </Route>

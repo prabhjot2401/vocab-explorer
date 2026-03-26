@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { useVocabulary } from '../context/VocabularyContext';
 import WordDetail from '../components/WordDetail';
 import { Word } from '../types';
 
 const Search: React.FC = () => {
+  const navigate = useNavigate();
   const [query, setQuery] = useState('');
   const [selectedWord, setSelectedWord] = useState<Word | null>(null);
   const { vocabulary, isLoading } = useVocabulary();
@@ -86,7 +88,7 @@ const Search: React.FC = () => {
                 <span className="material-symbols-outlined fill-1 text-[20px]">bookmark</span>
               </button>
               <button
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => { e.stopPropagation(); navigate(`/nodes/${word.id}`); }}
                 className="p-1.5 text-[#727783] hover:text-[#004e99] transition-colors active:scale-90"
               >
                 <span className="material-symbols-outlined text-[20px]">hub</span>
