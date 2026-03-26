@@ -78,9 +78,26 @@ const Search: React.FC = () => {
               </div>
               <div className="text-xs md:text-sm text-[#414752] truncate">{highlightMatch(word.translation, query)}</div>
             </div>
-            <span className="material-symbols-outlined text-[#727783] transition-transform group-hover:translate-x-1 flex-shrink-0 text-[20px]">
-              chevron_right
-            </span>
+            <div className="flex items-center gap-1.5 md:gap-4 flex-shrink-0">
+              <button
+                onClick={(e) => e.stopPropagation()}
+                className="p-1.5 text-[#004e99] hover:scale-110 transition-transform active:scale-90"
+              >
+                <span className="material-symbols-outlined fill-1 text-[20px]">bookmark</span>
+              </button>
+              <button
+                onClick={(e) => e.stopPropagation()}
+                className="p-1.5 text-[#727783] hover:text-[#004e99] transition-colors active:scale-90"
+              >
+                <span className="material-symbols-outlined text-[20px]">hub</span>
+              </button>
+              <button
+                onClick={(e) => e.stopPropagation()}
+                className="p-1.5 text-[#727783] hover:text-[#004e99] transition-colors active:scale-90"
+              >
+                <span className="material-symbols-outlined text-[20px]">volume_up</span>
+              </button>
+            </div>
           </motion.div>
         ))}
         

@@ -88,9 +88,26 @@ const CategoryDetail: React.FC = () => {
                 <p className="text-[#414752] text-xs md:text-sm font-medium truncate">{word.translation}</p>
               </div>
             </div>
-            <button className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-[#c1c6d4]/20 flex items-center justify-center text-[#0b66c2] hover:bg-[#0b66c2] hover:text-white transition-colors active:scale-90 flex-shrink-0 ml-2">
-              <span className="material-symbols-outlined text-[16px] md:text-[20px] fill-1">play_arrow</span>
-            </button>
+            <div className="flex items-center gap-1.5 md:gap-4 flex-shrink-0">
+              <button
+                onClick={(e) => e.stopPropagation()}
+                className="p-1.5 text-[#004e99] hover:scale-110 transition-transform active:scale-90"
+              >
+                <span className="material-symbols-outlined fill-1 text-[20px]">bookmark</span>
+              </button>
+              <button
+                onClick={(e) => e.stopPropagation()}
+                className="p-1.5 text-[#727783] hover:text-[#004e99] transition-colors active:scale-90"
+              >
+                <span className="material-symbols-outlined text-[20px]">hub</span>
+              </button>
+              <button
+                onClick={(e) => e.stopPropagation()}
+                className="p-1.5 text-[#727783] hover:text-[#004e99] transition-colors active:scale-90"
+              >
+                <span className="material-symbols-outlined text-[20px]">volume_up</span>
+              </button>
+            </div>
           </motion.div>
         ))}
       </div>
