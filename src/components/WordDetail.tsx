@@ -34,7 +34,7 @@ const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
       >
         <section className="w-full max-w-2xl max-h-[70vh] bg-white rounded-t-[2rem] md:rounded-t-[2.5rem] shadow-2xl border-x border-t border-[#c1c6d4]/10 flex flex-col overflow-hidden">
         {/* Top Bar: Drag Handle + Close */}
-        <div className="w-full flex items-center justify-between px-4 md:px-6 py-3 md:py-4 flex-shrink-0">
+        <div className="w-full flex items-center justify-between px-8 md:px-10 py-3 md:py-4 flex-shrink-0">
           <div className="w-9 h-9" />
           <div className="w-10 md:w-12 h-1.5 bg-[#e2e2e2] rounded-full cursor-pointer" onClick={onClose} />
           <button
@@ -50,21 +50,21 @@ const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
           <div className="flex flex-col gap-1.5 md:gap-2 mb-5 md:mb-8">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-[#1a1c1c]">{word.cree}</h2>
-              <div className="flex items-center gap-1.5 bg-[#f3f3f3] rounded-full p-1.5 flex-shrink-0 ml-3 border border-[#c1c6d4]/15">
+              <div className="flex items-center gap-1 bg-[#f3f3f3] rounded-full p-1 flex-shrink-0 ml-3 border border-[#c1c6d4]/15">
                 <button
                   onClick={() => toggleSavedWord(word.id)}
-                  className={`w-9 h-9 md:w-10 md:h-10 rounded-l-full rounded-r-lg bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 shadow-sm ${savedWordIds.includes(word.id) ? 'text-[#004e99]' : 'text-[#727783]'}`}
+                  className={`w-7 h-7 md:w-8 md:h-8 rounded-l-full rounded-r-md bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 shadow-sm ${savedWordIds.includes(word.id) ? 'text-[#004e99]' : 'text-[#727783]'}`}
                 >
-                  <span className={`material-symbols-outlined text-[18px] md:text-[20px] ${savedWordIds.includes(word.id) ? 'fill-1' : ''}`}>bookmark</span>
+                  <span className={`material-symbols-outlined text-[16px] md:text-[18px] ${savedWordIds.includes(word.id) ? 'fill-1' : ''}`}>bookmark</span>
                 </button>
                 <button
                   onClick={() => navigate(`/nodes/${word.id}`)}
-                  className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 text-[#727783] hover:text-[#004e99] shadow-sm"
+                  className="w-7 h-7 md:w-8 md:h-8 rounded-md bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 text-[#727783] hover:text-[#004e99] shadow-sm"
                 >
-                  <span className="material-symbols-outlined text-[18px] md:text-[20px]">hub</span>
+                  <span className="material-symbols-outlined text-[16px] md:text-[18px]">hub</span>
                 </button>
-                <button className="w-9 h-9 md:w-10 md:h-10 rounded-r-full rounded-l-lg bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 text-[#004e99] shadow-sm">
-                  <span className="material-symbols-outlined text-[18px] md:text-[20px]">volume_up</span>
+                <button className="w-7 h-7 md:w-8 md:h-8 rounded-r-full rounded-l-md bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 text-[#004e99] shadow-sm">
+                  <span className="material-symbols-outlined text-[16px] md:text-[18px]">volume_up</span>
                 </button>
               </div>
             </div>
