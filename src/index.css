@@ -46,7 +46,7 @@
 
   /* Safe area padding for bottom nav on notched phones */
   .safe-bottom {
-    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(2.25rem + env(safe-area-inset-bottom, 0px));
   }
 
   /* Node Network Background */

@@ -25,9 +25,16 @@ const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
       />
 
       <section className="w-full max-w-2xl bg-white rounded-t-[2rem] md:rounded-t-[2.5rem] shadow-2xl border-x border-t border-[#c1c6d4]/10 overflow-hidden">
-        {/* Drag Handle */}
-        <div className="w-full flex justify-center py-3 md:py-4 cursor-pointer" onClick={onClose}>
-          <div className="w-10 md:w-12 h-1.5 bg-[#e2e2e2] rounded-full" />
+        {/* Top Bar: Drag Handle + Close */}
+        <div className="w-full flex items-center justify-between px-4 md:px-6 py-3 md:py-4">
+          <div className="w-9 h-9" />
+          <div className="w-10 md:w-12 h-1.5 bg-[#e2e2e2] rounded-full cursor-pointer" onClick={onClose} />
+          <button
+            onClick={onClose}
+            className="w-9 h-9 rounded-full bg-[#f3f3f3] flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90"
+          >
+            <span className="material-symbols-outlined text-[#414752] text-[20px]">close</span>
+          </button>
         </div>
 
         <div className="px-4 md:px-8 pb-28 md:pb-32 pt-2 md:pt-4 max-h-[85vh] overflow-y-auto overscroll-contain">
