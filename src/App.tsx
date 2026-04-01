@@ -21,7 +21,7 @@ function AppContent() {
       <AnimatePresence>
         {showTutorial && <Tutorial onComplete={completeTutorial} />}
       </AnimatePresence>
-      <Router>
+      <Router basename="/vocab-explorer">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Explore />} />
