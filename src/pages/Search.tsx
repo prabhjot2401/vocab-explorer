@@ -76,7 +76,7 @@ const Search: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
             onClick={() => setSelectedWord(word)}
-            className="group flex items-center justify-between px-6 py-4 md:px-8 md:py-5 bg-white rounded-full hover:bg-[#e8e8e8] transition-all duration-300 cursor-pointer border border-transparent active:scale-[0.98] shadow-sm"
+            className={`group flex items-center justify-between px-6 py-4 md:px-8 md:py-5 rounded-full hover:bg-[#e8e8e8] transition-all duration-300 cursor-pointer active:scale-[0.98] shadow-sm ${query && index === 0 ? 'bg-[#004e99]/10 border border-[#004e99]/30' : 'bg-white border border-transparent'}`}
           >
             <div className="flex flex-col gap-0.5 min-w-0 flex-1 mr-3">
               <div className="font-bold text-base md:text-lg text-[#1a1c1c] truncate">
