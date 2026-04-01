@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 import { Word } from '../types';
 import { useSettings } from '../context/SettingsContext';
+import { useVocabulary } from '../context/VocabularyContext';
 
 interface WordDetailProps {
   word: Word;
@@ -10,6 +12,8 @@ interface WordDetailProps {
 
 const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
   const { learningMode } = useSettings();
+  const { savedWordIds, toggleSavedWord } = useVocabulary();
+  const navigate = useNavigate();
   return (
     <>
       {/* Backdrop */}
@@ -41,14 +45,28 @@ const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
           </button>
         </div>
 
-        <div className="px-4 md:px-8 pb-10 md:pb-12 pt-2 md:pt-4 flex-1 overflow-y-auto overscroll-contain">
+        <div className="px-8 md:px-10 pb-10 md:pb-12 pt-2 md:pt-4 flex-1 overflow-y-auto overscroll-contain">
           {/* Header Section */}
           <div className="flex flex-col gap-1.5 md:gap-2 mb-5 md:mb-8">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-[#1a1c1c]">{word.cree}</h2>
-              <button className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-[#f3f3f3] flex items-center justify-center hover:bg-[#e8e8e8] transition-colors flex-shrink-0 ml-3 active:scale-90">
-                <span className="material-symbols-outlined text-[#004e99] text-[20px] md:text-[24px]">volume_up</span>
-              </button>
+              <div className="flex items-center gap-1.5 bg-[#f3f3f3] rounded-full p-1.5 flex-shrink-0 ml-3 border border-[#c1c6d4]/15">
+                <button
+                  onClick={() => toggleSavedWord(word.id)}
+                  className={`w-9 h-9 md:w-10 md:h-10 rounded-l-full rounded-r-lg bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 shadow-sm ${savedWordIds.includes(word.id) ? 'text-[#004e99]' : 'text-[#727783]'}`}
+                >
+                  <span className={`material-symbols-outlined text-[18px] md:text-[20px] ${savedWordIds.includes(word.id) ? 'fill-1' : ''}`}>bookmark</span>
+                </button>
+                <button
+                  onClick={() => { onClose(); navigate(`/nodes/${word.id}`); }}
+                  className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 text-[#727783] hover:text-[#004e99] shadow-sm"
+                >
+                  <span className="material-symbols-outlined text-[18px] md:text-[20px]">hub</span>
+                </button>
+                <button className="w-9 h-9 md:w-10 md:h-10 rounded-r-full rounded-l-lg bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 text-[#004e99] shadow-sm">
+                  <span className="material-symbols-outlined text-[18px] md:text-[20px]">volume_up</span>
+                </button>
+              </div>
             </div>
             <span className="text-[#414752] font-medium text-sm md:text-lg italic tracking-wide">{word.phonetic}</span>
             <div className="flex flex-wrap gap-1.5 md:gap-2 mt-2 md:mt-4">
