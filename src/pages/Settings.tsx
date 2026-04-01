@@ -5,7 +5,7 @@ import { useSettings } from '../context/SettingsContext';
 
 const Settings: React.FC = () => {
   const navigate = useNavigate();
-  const { learningMode, setLearningMode } = useSettings();
+  const { learningMode, setLearningMode, replayTutorial } = useSettings();
   const [displayMode, setDisplayMode] = useState<'english' | 'cree'>('english');
   const [audioSource, setAudioSource] = useState<'y' | 'th' | 'both'>('both');
 
@@ -145,6 +145,23 @@ const Settings: React.FC = () => {
       </section>
 
 
+
+      {/* Replay Tutorial */}
+      <section>
+        <button
+          onClick={replayTutorial}
+          className="w-full flex items-center justify-between p-4 md:p-5 bg-white rounded-xl md:rounded-2xl border border-[#c1c6d4]/10 shadow-sm hover:bg-[#f3f3f3] active:scale-[0.98] transition-all cursor-pointer"
+        >
+          <div className="flex items-center gap-3">
+            <span className="material-symbols-outlined text-[#004e99] text-[20px]">replay</span>
+            <div className="flex flex-col text-left">
+              <span className="font-semibold text-[#1a1c1c] text-sm md:text-base">Replay Tutorial</span>
+              <span className="text-[10px] md:text-xs text-[#414752]">View the onboarding walkthrough again</span>
+            </div>
+          </div>
+          <span className="material-symbols-outlined text-[#c1c6d4] text-[20px]">chevron_right</span>
+        </button>
+      </section>
 
       {/* Version Info */}
       <div className="text-center py-2 md:py-6">

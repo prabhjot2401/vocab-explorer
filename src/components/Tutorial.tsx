@@ -88,7 +88,7 @@ const Tutorial: React.FC<TutorialProps> = ({ onComplete }) => {
     >
       <button
         onClick={onComplete}
-        className="absolute top-4 right-4 md:top-6 md:right-6 px-3 py-1.5 text-xs font-semibold text-[#727783] hover:text-[#1a1c1c] transition-colors rounded-full hover:bg-[#f3f3f3]"
+        className="absolute top-4 right-4 md:top-6 md:right-6 px-4 py-2 text-sm font-semibold text-[#727783] hover:text-[#1a1c1c] transition-colors rounded-full hover:bg-[#f3f3f3] border border-[#c1c6d4]/30"
       >
         Skip
       </button>
