@@ -1,5 +1,8 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Word } from '../types';
+import dbData from '../../db.json';
+
+const bundledVocabulary: Word[] = dbData.vocabulary as Word[];
 
 interface VocabularyContextType {
   vocabulary: Word[];
@@ -14,7 +17,7 @@ interface VocabularyContextType {
 const VocabularyContext = createContext<VocabularyContextType>({
   vocabulary: [],
   savedWordIds: [],
-  isLoading: true,
+  isLoading: false,
   error: null,
   refreshVocabulary: async () => {},
   submitSuggestion: async () => {},
@@ -24,7 +27,7 @@ const VocabularyContext = createContext<VocabularyContextType>({
 export const useVocabulary = () => useContext(VocabularyContext);
 
 export const VocabularyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [vocabulary, setVocabulary] = useState<Word[]>([]);
+  const [vocabulary] = useState<Word[]>(bundledVocabulary);
   const [savedWordIds, setSavedWordIds] = useState<string[]>(() => {
     try {
       const stored = localStorage.getItem('savedWords');
@@ -33,39 +36,15 @@ export const VocabularyProvider: React.FC<{ children: ReactNode }> = ({ children
       return [];
     }
   });
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const isLoading = false;
+  const error = null;
 
-  const fetchVocabulary = async () => {
-    setIsLoading(true);
-    try {
-      const res = await fetch('http://localhost:3001/api/vocabulary');
-      if (!res.ok) throw new Error('Failed to fetch vocabulary');
-      const data = await res.json();
-      setVocabulary(data);
-      setError(null);
-    } catch (err) {
-      console.error(err);
-      setError('Could not establish connection to server.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchVocabulary();
-  }, []);
+  const refreshVocabulary = async () => {};
 
   const submitSuggestion = async (suggestedData: { word: string; category: string; description: string }) => {
-    const res = await fetch('http://localhost:3001/api/vocabulary/suggest', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(suggestedData),
-    });
-    
-    if (!res.ok) {
-      throw new Error('Failed to submit suggestion');
-    }
+    const suggestions = JSON.parse(localStorage.getItem('suggestions') || '[]');
+    suggestions.push({ ...suggestedData, id: `suggestion-${Date.now()}`, status: 'pending', submittedAt: new Date().toISOString() });
+    localStorage.setItem('suggestions', JSON.stringify(suggestions));
   };
 
   const toggleSavedWord = (id: string) => {
@@ -77,7 +56,7 @@ export const VocabularyProvider: React.FC<{ children: ReactNode }> = ({ children
   };
 
   return (
-    <VocabularyContext.Provider value={{ vocabulary, savedWordIds, isLoading, error, refreshVocabulary: fetchVocabulary, submitSuggestion, toggleSavedWord }}>
+    <VocabularyContext.Provider value={{ vocabulary, savedWordIds, isLoading, error, refreshVocabulary, submitSuggestion, toggleSavedWord }}>
       {children}
     </VocabularyContext.Provider>
   );
