@@ -14,6 +14,16 @@ const CategoryDetail: React.FC = () => {
   const { learningMode } = useSettings();
   
   const categoryWords = vocabulary.filter(w => w.category.toLowerCase() === id?.toLowerCase());
+
+  const categoryIcon: Record<string, string> = {
+    weather: 'cloudy_snowing',
+    nature: 'forest',
+    animals: 'pets',
+    greetings: 'waving_hand',
+    family: 'family_restroom',
+    food: 'restaurant',
+  };
+  const getIcon = () => categoryIcon[id?.toLowerCase() || ''] || 'translate';
   const wordOfTheDay = categoryWords[0] || (vocabulary.length > 0 ? vocabulary[0] : null);
 
   return (
@@ -41,16 +51,13 @@ const CategoryDetail: React.FC = () => {
                   : 'bg-[#d6e3ff] text-[#004e99]'
               }`}
             >
-              <span className="material-symbols-outlined text-[10px] md:text-[12px] fill-1">
+              <span className="material-symbols-outlined text-[8px] md:text-[10px] fill-1">
                 {learningMode === 'expert' ? 'psychology' : 'school'}
               </span>
               {learningMode === 'expert' ? 'Expert' : 'Simple'}
             </span>
           </motion.h1>
         </div>
-        <button className="p-1.5 hover:bg-[#e8e8e8] transition-colors active:scale-95 duration-150 rounded-full flex items-center justify-center">
-          <span className="material-symbols-outlined text-[#414752]">search</span>
-        </button>
       </header>
 
       {/* Header Editorial Section */}
@@ -96,7 +103,7 @@ const CategoryDetail: React.FC = () => {
             <div className="flex items-center gap-3 md:gap-6 min-w-0 flex-1">
               <div className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-[#d6e3ff] flex items-center justify-center text-[#004e99] group-hover:scale-110 transition-transform flex-shrink-0">
                 <span className="material-symbols-outlined fill-1 text-[18px] md:text-[24px]">
-                  {word.id === 'yikwaskwan' ? 'cloud' : word.id === 'kimiwan' ? 'rainy' : word.id === 'yotin' ? 'air' : word.id === 'mispon' ? 'ac_unit' : 'thunderstorm'}
+                  {getIcon()}
                 </span>
               </div>
               <div className="min-w-0 flex-1">

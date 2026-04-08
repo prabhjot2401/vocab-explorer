@@ -57,7 +57,7 @@ const Contribute: React.FC = () => {
                   : 'bg-[#d6e3ff] text-[#004e99]'
               }`}
             >
-              <span className="material-symbols-outlined text-[10px] md:text-[12px] fill-1">
+              <span className="material-symbols-outlined text-[8px] md:text-[10px] fill-1">
                 {learningMode === 'expert' ? 'psychology' : 'school'}
               </span>
               {learningMode === 'expert' ? 'Expert' : 'Simple'}
